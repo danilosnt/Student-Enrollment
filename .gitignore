@@ -1,17 +1,6 @@
-# Pasta do Visual Studio
-.vs/
-.sln/
+**/[Bb]in/
+**/[Oo]bj/
 
-# Pastas de compilação
-[Bb]in/
-[Oo]bj/
-
-# Arquivos de usuário
+**/.vs/
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
-
-# Outros
-*.DS_Store
-*.swp

@@ -1,0 +1,54 @@
+﻿@model CadastroDeEstudantes.Models.Estudante
+
+@{
+    ViewData["Title"] = "Excluir Estudante";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="alert alert-danger" role="alert">
+    <strong>Atenção!</strong> Você tem certeza que deseja excluir permanentemente este registro?
+</div>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h4>Informações de @Html.DisplayFor(model => model.Nome)</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.CPF)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CPF)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Endereco)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.DataConclusao)
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.DataConclusao.ToString("dd/MM/yyyy")
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <form asp-action="Delete" class="mt-4">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir Permanentemente" class="btn btn-danger"
+               onclick="return confirm('Esta é a confirmação final. Deseja realmente apagar este registro?');" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar e Voltar</a>
+    </form>
+</div>

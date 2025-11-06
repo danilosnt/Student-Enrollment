@@ -1,0 +1,17 @@
+# Pasta do Visual Studio
+.vs/
+.sln/
+
+# Pastas de compilação
+[Bb]in/
+[Oo]bj/
+
+# Arquivos de usuário
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Outros
+*.DS_Store
+*.swp

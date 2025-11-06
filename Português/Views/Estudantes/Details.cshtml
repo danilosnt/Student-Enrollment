@@ -1,0 +1,48 @@
+﻿@model CadastroDeEstudantes.Models.Estudante
+
+@{
+    ViewData["Title"] = "Detalhes do Estudante";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <div class="card">
+        <div class="card-header">
+            <h4>Informações de @Html.DisplayFor(model => model.Nome)</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.CPF)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CPF)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Endereco)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.DataConclusao)
+                </dt>
+                <dd class="col-sm-9">
+                    @Model.DataConclusao.ToString("dd/MM/yyyy")
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+</div>
