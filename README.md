@@ -38,7 +38,7 @@ A refactored version of the project with all source code, comments, and user int
 
 ---
 
-## ✨ Main Features (Present in both versions)
+## Main Features (Present in both versions)
 
 * **Complete CRUD Management:** Full system to Create, Read, Update, and Delete students.
 * **Dynamic Search:** A real-time search field to filter the student list by Name, CPF, or Address.
