@@ -1,100 +1,95 @@
-# Sistema de Cadastro de Estudantes (IEL)
+# 📋 Student Enrollment System
 
-Aplicação web para gerenciamento de estudantes, desenvolvida em ASP.NET Core MVC.
+A web application for student management, developed in ASP.NET Core MVC.
 
-O projeto implementa um sistema CRUD (Create, Read, Update, Delete) completo, com foco em validações robustas de dados, boas práticas de arquitetura MVC e uma interface de usuário moderna e interativa.
+This project implements a complete CRUD (Create, Read, Update, Delete) system, focusing on robust data validation, MVC architecture best practices, and a modern, interactive user interface.
 
 ---
 
-## 💻 Tecnologias
+## 📂 Repository Structure
+
+This repository is organized into two main folders, each containing a complete, independent version of the project:
+
+### 1. ➡️ `/Portuguese`
+A full version of the project with all source code, comments, and user interface in **Portuguese (Brazil)**.
+* **To open:** Use the `CadastroDeEstudantes.sln` file inside this folder.
+
+### 2. ➡️ `/English`
+A refactored version of the project with all source code, comments, and user interface in **English**.
+* **To open:** Use the `StudentEnrollment.sln` file inside this folder.
+
+---
+
+## 💻 Technologies (Used in both versions)
 
 ### Back-end
-* **C# 12** e **.NET 8**
-* **ASP.NET Core MVC**: Estrutura principal da aplicação.
-* **Entity Framework Core 8**: ORM para acesso a dados (Code-First).
+* **C# 12** and **.NET 8**
+* **ASP.NET Core MVC**: Main framework for the web application.
+* **Entity Framework Core 8**: ORM for data access (Code-First approach).
 
 ### Front-end
 * **HTML5, CSS3, JavaScript**
-* **Bootstrap 5**: Framework para estilização e responsividade.
-* **jQuery** & **Toastr.js**: Bibliotecas para interatividade (máscara de CPF e notificações).
+* **Bootstrap 5**: Framework for styling and responsiveness.
+* **jQuery** & **Toastr.js**: Libraries for interactivity (CPF mask and notifications).
 
-### Banco de Dados & Ferramentas
+### Database & Tools
 * **SQL Server LocalDB**
 * **Visual Studio 2022**
 
 ---
 
-## 📋 Funcionalidades Principais
+## ✨ Main Features (Present in both versions)
 
-* **Gerenciamento Completo (CRUD):** Criação, leitura, atualização e exclusão de estudantes.
-* **Busca Dinâmica:** Filtro em tempo real na lista de estudantes por Nome, CPF ou Endereço.
-* **Validações Avançadas:**
-    * **CPF:** Validação matemática, unicidade no banco de dados e máscara de formato.
-    * **Nome:** Permite apenas letras e espaços.
-    * **Data de Conclusão:** Restrita ao período entre 1900 e a data atual.
-
----
-
-## 📂 Estrutura do Projeto
-
-A organização do projeto segue a convenção do ASP.NET Core MVC, com as responsabilidades separadas nas seguintes pastas principais:
-
-### `/Models`
-Define as classes que representam os dados da aplicação e suas regras de negócio.
-* `Student.cs`: Entidade principal do sistema. Centraliza todos os atributos de um estudante e suas regras de validação (ex: `[Required]`, `[StringLength]`, e os atributos customizados).
-
-### `/Views`
-Contém os arquivos de interface do usuário (`.cshtml`) que são renderizados no navegador.
-* **`/Estudantes`**: Telas relacionadas ao gerenciamento de estudantes.
-    * `Index.cshtml`: Exibe a lista de todos os estudantes em formato de "cards" e o campo de busca.
-    * `Create.cshtml`: Formulário para o cadastro de um novo estudante.
-    * `Edit.cshtml`: Formulário para a edição de um estudante existente.
-    * `Details.cshtml`: Página de visualização com todos os detalhes de um estudante.
-    * `Delete.cshtml`: Tela de confirmação antes da exclusão de um registro.
-* **`/Home`**: Páginas gerais da aplicação.
-    * `Index.cshtml`: Página inicial da aplicação.
-* **`/Shared`**: Elementos de layout reutilizáveis em todo o site.
-    * `_Layout.cshtml`: O template mestre que define a estrutura comum (navbar, rodapé).
-    * `_NotificationPartial.cshtml`: Componente para exibir as notificações "Toast".
-
-### `/Controllers`
-Responsáveis por receber as requisições, processar a lógica e retornar as `Views`.
-* `EstudantesController.cs`: Orquestra todas as ações do CRUD de Estudantes (Listar, Criar, Salvar, Excluir). É o cérebro da aplicação, lidando com validações, busca e comunicação com o banco de dados.
-* `HomeController.cs`: Controla as páginas estáticas, como a página `Index` inicial.
-
-### `/Data`
-Classes responsáveis pela configuração e comunicação com o banco de dados via Entity Framework Core.
-* `ApplicationDbContext.cs`: A "ponte" entre a aplicação e o banco. Mapeia a classe `Student` para a tabela `Estudantes` no banco de dados.
-* `DesignTimeDbContextFactory.cs`: Classe de suporte que permite que as ferramentas de linha de comando do EF Core (ex: para criar `migrations`) funcionem corretamente.
-
-### `/Validation`
-Contém os atributos de validação customizados para implementar regras de negócio específicas.
-* `CpfValidationAttribute.cs`: Valida se um CPF é matematicamente válido, verificando se há sequência e os dígitos verificadores.
-* `DateValidationAttribute.cs`: Valida se a data de conclusão está dentro do período permitido (de 1900 até a data atual).
+* **Complete CRUD Management:** Full system to Create, Read, Update, and Delete students.
+* **Dynamic Search:** A real-time search field to filter the student list by Name, CPF, or Address.
+* **Robust Validations:**
+    * **CPF:** Mathematical validation, database uniqueness (Unique Index), and format mask.
+    * **Name:** Allows only letters and spaces.
+    * **Completion Date:** Restricted to the period between 1900 and the current date.
+* **Modern UI:** Responsive layout using "Cards" and user feedback with "Toast" notifications.
+* **Security:** CSRF (Anti-Forgery Tokens) protection and a delete confirmation system.
 
 ---
 
-## Como Executar Localmente
+## 📂 Project Structure (Internal Architecture)
 
-**Pré-requisitos:**
+Both versions (`/Portuguese` and `/English`) follow the standard ASP.NET Core MVC architecture, with responsibilities separated as follows:
+
+* **/Controllers**: Receive user requests, process business logic, and return the appropriate `View` (e.g., `EstudantesController.cs` / `StudentsController.cs`).
+* **/Models**: Define the data entities (e.g., `Estudante.cs` / `Student.cs`) and their validation rules.
+* **/Views**: Contain the `.cshtml` files that define the user interface (the screens), including folders for `Estudantes` (or `Students`), `Home`, and `Shared`.
+* **/Data**: Manage the database configuration and communication via Entity Framework (e.g., `ApplicationDbContext.cs`).
+* **/Validation**: Contain custom validation attribute classes for specific business rules (e.g., `CpfValidationAttribute.cs`).
+* **/wwwroot**: Stores all static front-end assets that are sent directly to the user's browser, such as CSS (`site.css`), JavaScript, and libraries.
+
+---
+
+## 🛠️ How to Run Locally
+
+You can run either version of the project.
+
+**Prerequisites:**
 * .NET 8 SDK
-* Visual Studio 2022 (com a carga de trabalho "ASP.NET e desenvolvimento web").
+* Visual Studio 2022 (with the "ASP.NET and web development" workload).
 
-**Passos:**
-1.  Clone o repositório para a sua máquina:
+**Steps:**
+1.  Clone the repository:
     ```bash
-    git clone [https://github.com/danilosnt/Cadastro-de-Alunos.git](https://github.com/danilosnt/Cadastro-de-Alunos.git)
+    git clone [https://github.com/danilosnt/Student-Enrollment.git](https://github.com/danilosnt/Student-Enrollment.git)
     ```
-2.  Abra o **Projeto** no Visual Studio:
-    * Inicie o Visual Studio e, na tela de início, selecione a opção **"Open a project or solution"**.
-    * Navegue até a pasta que você acabou de clonar.
-    * Selecione o arquivo de projeto **`StudentEnrollment.csproj`** e clique em "Open".
+2.  **Choose a version** and open the corresponding solution in Visual Studio:
 
-3.  Crie o Banco de Dados Local:
-    * Com o projeto aberto, vá até o menu **Tools > NuGet Package Manager > Package Manager Console**.
-    * Na console que se abrir, execute o seguinte comando para que o Entity Framework crie o banco de dados:
+    * **For the Portuguese version:**
+        * Open the file `Student-Enrollment/Português/CadastroDeEstudantes.sln`
+
+    * **For the English version:**
+        * Open the file `Student-Enrollment/English/StudentEnrollment.sln`
+
+3.  **Create the Database:**
+    * With the solution open, go to the menu **Tools > NuGet Package Manager > Package Manager Console**.
+    * Run the following command to create the database for that version:
     ```powershell
     Update-Database
     ```
-4.  Execute a Aplicação:
-    * Pressione **`F5`** ou clique no botão de "Play" (▶) para compilar e iniciar o projeto. O site será aberto no seu navegador padrão.
+4.  **Run the Application:**
+    * Press **`F5`** to start the project.
